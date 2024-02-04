@@ -22,8 +22,10 @@ export default function AuthInputs() {
   const passwordNotValid = submitted && enteredPassword.trim().length < 6;  
 
   return (
-    <div id="auth-inputs">
-      <div className="controls">
+    <div id="auth-inputs" className='w-full max-w-sm mx-auto p-8 rounded shadow-md bg-gradient-to-b from-stone-700 to-stone-800'>
+      {/* from-stone-700 --> starting color in gradient
+      to-stone-700 --> ending color in gradient */}
+      <div className='flex flex-col gap-2 mb-6'> {/* gap-2 --> adds gap between child elements */}
         <Input 
           label={'Email'} 
           invalid={emailNotValid}
@@ -37,8 +39,8 @@ export default function AuthInputs() {
           onChange={(event) => handleInputChange('password', event.target.value)}
         />
       </div>
-      <div className="actions">
-        <button type="button" className="text-button">
+      <div className="flex justify-end gap-4">
+        <button type="button" className="text-amber-400 hover:text-amber-500">
           Create a new account
         </button>
         <button className='px-4 py-2 font-semibold uppercase rounded text-stone-900 bg-amber-400 hover:bg-amber-500' onClick={handleLogin}>Sign In</button>
