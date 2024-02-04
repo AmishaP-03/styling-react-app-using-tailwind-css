@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Input from './Input';
 
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState('');
@@ -18,29 +19,23 @@ export default function AuthInputs() {
   }
 
   const emailNotValid = submitted && !enteredEmail.includes('@');
-  const passwordNotValid = submitted && enteredPassword.trim().length < 6;
+  const passwordNotValid = submitted && enteredPassword.trim().length < 6;  
 
   return (
     <div id="auth-inputs">
       <div className="controls">
-        <p>
-          <label>Email</label>
-          <input
-            type="email"
-            className={emailNotValid ? 'invalid' : undefined}
-            onChange={(event) => handleInputChange('email', event.target.value)}
-          />
-        </p>
-        <p>
-          <label>Password</label>
-          <input
-            type="password"
-            className={passwordNotValid ? 'invalid' : undefined}
-            onChange={(event) =>
-              handleInputChange('password', event.target.value)
-            }
-          />
-        </p>
+        <Input 
+          label={'Email'} 
+          invalid={emailNotValid}
+          type="email"
+          onChange={(event) => handleInputChange('email', event.target.value)}
+        />
+        <Input
+          label={'Password'}
+          invalid={passwordNotValid}
+          type="password"
+          onChange={(event) => handleInputChange('password', event.target.value)}
+        />
       </div>
       <div className="actions">
         <button type="button" className="text-button">
